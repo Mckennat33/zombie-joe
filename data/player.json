@@ -1,0 +1,7 @@
+{
+  "speed": 220,
+  "max_health": 100,
+  "lives": 3,
+  "size": 28,
+  "start_weapon": "pistol"
+}

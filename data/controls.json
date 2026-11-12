@@ -1,0 +1,25 @@
+{
+  "solo": {
+    "up": ["w", "up"],
+    "down": ["s", "down"],
+    "left": ["a", "left"],
+    "right": ["d", "right"],
+    "shoot": ["space"]
+  },
+  "coop": [
+    {
+      "up": ["w"],
+      "down": ["s"],
+      "left": ["a"],
+      "right": ["d"],
+      "shoot": ["space"]
+    },
+    {
+      "up": ["up"],
+      "down": ["down"],
+      "left": ["left"],
+      "right": ["right"],
+      "shoot": ["return"]
+    }
+  ]
+}

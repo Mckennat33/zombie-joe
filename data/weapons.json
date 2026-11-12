@@ -1,0 +1,11 @@
+{
+  "pistol": {
+    "display_name": "Pistol",
+    "damage": 25,
+    "fire_delay": 0.4,
+    "bullet_speed": 700,
+    "range": 1000,
+    "magazine_size": null,
+    "reserve_ammo": 0
+  }
+}
