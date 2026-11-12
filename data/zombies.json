@@ -1,0 +1,15 @@
+{
+  "types": {
+    "walker": {
+      "speed": 45,
+      "health": 50,
+      "size": 26
+    }
+  },
+  "test_spawning": {
+    "_note": "Temporary until waves (M4) replace this with data/stages.json",
+    "type": "walker",
+    "seconds_between_spawns": 2.0,
+    "max_alive": 8
+  }
+}

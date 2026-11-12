@@ -3,6 +3,16 @@
 One task at a time, in order. Each task's **Done when** is something you can check by playing.
 Terms: **town** = one map; **stage** = one round of waves played in a town; **player level** = XP level.
 
+## Controls (current)
+
+| Action | Keys |
+|---|---|
+| Move | WASD or arrow keys |
+| Shoot | Space (fires the way Joe last walked) |
+| Quit | Esc |
+
+Run with `python main.py`. Keys can be changed in `data/controls.json`.
+
 ## M0 Setup
 
 - [x] Window and game loop (60 FPS, delta time, Esc/close to quit)
@@ -25,10 +35,12 @@ Terms: **town** = one map; **stage** = one round of waves played in a town; **pl
 
 ## M2 Zombies
 
-- [ ] Zombies spawn just off-screen and walk toward the nearest player
+- [x] Zombies (grey squares for now) spawn just off-screen and slowly walk toward the nearest player
   - Done when: zombies appear from the edges and follow Joe as he moves.
-- [ ] Zombie health: bullets damage zombies and are used up on hit; zombies die at 0 HP
-  - Done when: a zombie takes the number of pistol hits set in `data/zombies.json` to die.
+- [x] Zombie health: bullets damage zombies and are used up on hit; each hit sprays a little red blood; at 0 HP the zombie stops and slowly crumbles away
+  - Done when: a zombie takes 2 pistol hits to die (set by `health` in `data/zombies.json` and pistol `damage`), bleeds on each hit, and disintegrates on death.
+- [ ] Swap the grey squares for a zombie image once one is in `assets/images/zombies/`
+  - Done when: zombies show the image and turn to face the way they walk.
 - [ ] Zombies don't stack into one blob (they push apart a little)
   - Done when: a crowd of zombies stays spread out instead of overlapping.
 
@@ -37,11 +49,9 @@ Terms: **town** = one map; **stage** = one round of waves played in a town; **pl
 - [ ] Zombies hurt Joe on contact, with a short invulnerability window after each hit
   - Done when: touching a zombie lowers HP once per second at most, and Joe flashes while invulnerable.
 - [ ] Dying costs a life: at 0 HP, a heart turns grey and the current stage restarts from wave 1 with full HP (once XP exists in M6, XP also resets to what Joe had at the start of the stage, so dying can't farm XP)
-  - Done when: dying shows one fewer red heart and restarts the stage.
+  - Done when: dying shows one fewer red heart and restarts the stage. (Until stages exist in M4, "restart" means: clear the zombies and put Joe back in the middle.)
 - [ ] Game over when the last life is lost: show GAME OVER and "press R to continue"; R sends Joe back to the **previous stage** (but never into a previous town: on a town's first stage, he restarts that stage) with full lives and the guns/ammo he had when that stage started
-  - Done when: losing the third life on stage 3 shows GAME OVER, and R starts stage 2 with 3 hearts. (Until stages exist in M4, R just restarts with 3 hearts.)
-- [ ] Save a snapshot of Joe's guns and ammo at the start of each stage, so game over can restore them
-  - Done when: picking up a gun mid-stage and then getting a game over leaves Joe without that gun. (Testable once gun pickups exist in M8.)
+  - Done when: losing the third life on stage 3 shows GAME OVER, and R starts stage 2 with 3 hearts. (Until stages exist in M4, R just restarts with 3 hearts; check the "previous stage" part again after M4.)
 
 ## M4 Waves
 
@@ -83,12 +93,14 @@ Terms: **town** = one map; **stage** = one round of waves played in a town; **pl
   - Done when: in town 2, a house has a gun Joe can pick up, and town 1 has none.
 - [ ] Switch weapons (e.g. Q or number keys); each gun's damage, fire delay and ammo come from `data/weapons.json`
   - Done when: Joe can switch between the pistol and a picked-up gun, and they feel different.
-- [ ] Ammo: the pistol is unlimited; other guns run out and can't fire at 0 ammo
+- [ ] Ammo: picked-up guns run out and can't fire at 0 ammo (the pistol stays unlimited)
   - Done when: a picked-up gun stops firing when empty, and the pistol never runs out.
 - [ ] Automatic reloading: when the magazine is empty, the gun reloads from reserve ammo after a short delay (`reload_time` per gun in `data/weapons.json`); it can't fire while reloading, and the HUD shows "Reloading..."
   - Done when: emptying a gun shows "Reloading...", and after that gun's reload time the HUD goes from `0/100` to `30/70`.
 - [ ] Ammo pickups found in the world refill that gun's rounds
   - Done when: walking over an ammo pickup adds rounds to the matching gun.
+- [ ] Save a snapshot of Joe's guns and ammo at the start of each stage, so game over can restore them
+  - Done when: picking up a gun mid-stage and then getting a game over leaves Joe without that gun.
 
 ## M9 Towns and roadblocks
 
@@ -96,7 +108,7 @@ Terms: **town** = one map; **stage** = one round of waves played in a town; **pl
   - Done when: walking into the roadblock stops Joe and shows the warning.
 - [ ] The roadblock disappears after the town's stages are cleared (count set in JSON)
   - Done when: after the last stage in town 1, the roadblock is gone.
-- [ ] Driving out of town loads the next town map, with harder stages
+- [ ] Walking down the open road loads the next town map, with harder stages
   - Done when: leaving town 1 loads town 2, and its waves start tougher than town 1's.
 
 ## M10 Polish

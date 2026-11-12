@@ -27,6 +27,22 @@ IMPACT_SPARKS = 8
 IMPACT_SPARK_SPEED = 120  # pixels per second
 IMPACT_COLORS = [(255, 240, 150), (255, 150, 40)]  # core flash, sparks
 
+# Zombies (visuals only; speed/health live in data/zombies.json)
+ZOMBIE_COLOR = (125, 130, 125)
+SPAWN_MARGIN = 30  # how far off-screen zombies appear
+
+# Blood splat when a zombie is hit
+BLOOD_DURATION = 0.4  # seconds
+BLOOD_DROPS = 10
+BLOOD_SPEED = 150  # pixels per second
+BLOOD_SPREAD = 45  # degrees either side of the bullet's direction
+BLOOD_COLORS = [(200, 20, 20), (130, 0, 0)]
+
+# Dead zombies crumble into pieces that drift and shrink away
+DISINTEGRATE_DURATION = 1.5  # seconds
+DISINTEGRATE_GRID = 4  # zombie splits into 4x4 pieces
+DISINTEGRATE_DRIFT = 20  # pixels per second
+
 # HUD
 HUD_MARGIN = 16
 HUD_FONT_SIZE = 30
